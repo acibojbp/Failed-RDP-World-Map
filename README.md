@@ -53,18 +53,36 @@ Since I'm already familiar with creating a virtual machine in Azure, I'll stream
 2. Name the virtual machine "HoneypotRDP," choosing the region closest to my location.
 3. Adjust the security type to "Standard" to maximize vulnerability.
 4. Use the Windows 10 Pro image and keep all other settings at their defaults.
+5. 
+![VirtualBox_Ubuntu_31_03_2024_09_25_38](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/1085b565-9d15-4698-94f2-99fda692e3b1)
 
 Additionally, create an admin account with the username "HoneyRDP" and a secure password for later VM access.
 
 Next, under the "Networking" section:
 
+![VirtualBox_Ubuntu_31_03_2024_09_28_24](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/2e2ba1b9-8d73-4cc7-ab32-170faefc042f)
+
 1. Change the NIC network security group to "Advanced."
 2. Click on "Create new" to set up a new rule.
 3. Define a rule to open all inbound ports for this virtual machine.
 
+![VirtualBox_Ubuntu_31_03_2024_09_28_43](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/c81bada4-4405-4420-8f5e-a0af7f2e9c0d)
+
+![VirtualBox_Ubuntu_31_03_2024_09_29_13](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/56f27f1f-2986-45db-87ed-ace2c88d0890)
+
 Finally, proceed with "Review + Create" to deploy the virtual machine. Once deployed, navigate to the resource and note down the public IP address; we'll need this to connect to our VM
 
+![VirtualBox_Ubuntu_31_03_2024_09_31_39](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/c4c1285b-d736-4436-8f18-cb56fe71861d)
+
+![VirtualBox_Ubuntu_31_03_2024_09_35_11](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/d59ac4d7-9193-4f6f-9894-036ddfd649e5)
+
+![VirtualBox_Ubuntu_31_03_2024_09_35_40](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/ee393ada-a6a7-41cf-809f-0714cb6f0dc7)
+
 ## Setting Up Log Analytics Workspaces and Microsoft Defender for Cloud
+
+![VirtualBox_Ubuntu_31_03_2024_14_13_03](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/c6ed3990-3291-4b12-94dc-7ddb77859822)
+
+![VirtualBox_Ubuntu_31_03_2024_14_14_19](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/ac283a3a-442d-4b0e-8d15-b4291f86f67d)
 
 1. **Log Analytics Workspace Creation**:
 	- Navigate to the search bar and search for "Log Analytics Workspace".
@@ -72,6 +90,9 @@ Finally, proceed with "Review + Create" to deploy the virtual machine. Once depl
 	- Place this within the same resource group.
 	- Name it "LAW-HoneypotRDP".
 	- Click on "Review + Create".
+
+![VirtualBox_Ubuntu_31_03_2024_14_15_04](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/cc452b7f-47ea-46bd-b767-6aea2d07d0da)
+
 2. **Microsoft Defender for Cloud**:
 	- Once the deployment of the Log Analytics Workspace is complete, proceed to "Microsoft Defender for Cloud".
   
@@ -87,14 +108,27 @@ Microsoft Defender for Cloud gathers information from virtual machines and vario
     - Go to "Data Collection".
     - Select "All Events".
 
+![VirtualBox_Ubuntu_31_03_2024_14_18_36](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/f38b1b67-ece3-48d1-9668-af0eade0e8c0)
+
+![VirtualBox_Ubuntu_31_03_2024_14_20_57](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/47fb3e70-2e10-4350-ae81-348dae7c08eb)
+
+
 Return to the Log Analytics Workspaces and select your instance.
 
 1. **Configure Virtual Machines**:
     - On the left-hand side, click on "Virtual Machines".
     - Choose the virtual machine you previously created.
+
+![VirtualBox_Ubuntu_31_03_2024_14_22_59](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/3ff22d03-5515-413d-97fe-5af74c2db9a4)
+
+![VirtualBox_Ubuntu_31_03_2024_14_23_43](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/3f07ab37-f58d-4d45-89dd-6fab4293d6fd)
+
 2. **Initiate Connection**:
     - Click on "Connect".
     - Wait for the connection to be established.
+  
+![VirtualBox_Ubuntu_31_03_2024_14_23_55](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/fb064abf-6947-49fc-a857-a130fb595800)
+
 
 ## Deploy Microsoft Sentinel
 
@@ -105,6 +139,10 @@ Type "Microsoft Sentinel" in the search bar.
 
 2. **Add Log Analytics Workspace**:
     - Select the Log Analytics Workspace option and click "Add".
+
+![VirtualBox_Ubuntu_31_03_2024_14_26_07](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/7fbd2b21-b6de-4d58-b6da-e7200265e899)
+
+![VirtualBox_Ubuntu_31_03_2024_14_42_49](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/e98fb95d-7238-4cb5-a876-7dd6b5bcacd9)
 
 Wait for the deployment to complete.
 
@@ -153,19 +191,20 @@ If you encounter issues setting up Remmina on Ubuntu, refer to the following res
 
 If you are using Windows, follow these steps to connect to the virtual machine using the built-in Remote Desktop Protocol (RDP):
 
-1. **Open Remote Desktop Connection**:
-    
+1. **Open Remote Desktop Connection**:    
     - Press `Win + R`, type `mstsc`, and hit `Enter` to open the Remote Desktop Connection app.
-2. **Enter VM Details**:
-    
+
+2. **Enter VM Details**:    
     - In the "Computer" field, enter the public IP address of your virtual machine.
     - Click on "Connect".
-3. **Provide Credentials**:
-    
+
+3. **Provide Credentials**:    
     - Enter the username and password of the virtual machine when prompted.
-4. **Connect**:
-    
+
+4. **Connect**:    
     - Click "OK" or "Connect" to establish the RDP connection to your virtual machine.
+
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_32_23](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/6b39df24-a4d4-4ae8-ad68-64edf5b8ff6c)
 
 ## Configuring Windows 10 Virtual Machine Security Settings
 
@@ -175,10 +214,22 @@ After connecting to the VM, follow these steps to navigate to the Event Viewer a
     - Search for "Event Viewer" in the taskbar.
     - Navigate to `Windows Logs > Security`.
 
+![VirtualBox_Vulnerable Windows 10_31_03_2024_09_51_49](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/f09795e4-27e3-40e6-b7c0-ded79c6f77ef)
+
+![VirtualBox_Vulnerable Windows 10_31_03_2024_09_52_07](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/2847f275-abcf-44bf-ad67-310b2004f2b3)
+
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_33_55](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/288ac914-4f88-4d96-af36-36138419d421)
+
+
 1. **Disable Firewall**:
     - In the taskbar search, type `wf.msc` and hit `Enter`.
     - Click on "Windows Defender Firewall Properties".
     - Turn off the Firewall state for each of the profiles: Domain, Private, and Public.
+
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_35_27](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/708ea097-2895-4d66-a6b6-9db23c0b19c1)
+
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_35_58](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/4c4235c4-9c6a-4682-8b83-1bf742e505c5)
+
 
 ### Setup ipgeolocation.io 
 
@@ -191,41 +242,72 @@ We'll use a PowerShell script that leverages a third-party API key to fetch geol
 
 The script is saved in my repository, or you can check out Josh Madakor's repository. All credits for this script go to him. Here is the link to his repository: [joshmadakor1/Sentinel-Lab](https://github.com/joshmadakor1/Sentinel-Lab/tree/main)
 
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_36_48](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/fef64deb-d102-4e4a-835b-64b9ac53e2da)
+
 Open Windows PowerShell ISE on the VM via the search bar. Create a new script, and paste the provided script.
 
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_37_31](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/793a0e20-c21c-43a9-9608-d7d4e3b4e22b)
+
 To ensure the script runs correctly, replace the placeholder API key with your own. Save the script with a name of your choice; for example, `Custom_Security_Log_Exporter.ps1`.
+
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_38_16](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/143fe9c8-f86e-4f6b-8617-2971a43032b0)
 
 After running the script, the logs will be saved in `C:\ProgramData\failed_rdp.log`.
 
 You'll need to open this file, copy its contents, and save them in a text file. We will upload this text file to the Log Analytics Workspace as a sample log in the next step.
 
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_39_43](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/f3839cd4-0543-4528-b47a-834516d152b8)
+
 Note: The folder `C:\ProgramData\` is hidden by default. You'll need to enable the option to view hidden items to access and locate `failed_rdp.log`.
-  
+
+![VirtualBox_Vulnerable Windows 10_31_03_2024_14_39_51](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/2d584746-51bf-4e32-a9b1-0a9b5b47a490)
+
 ## Configuring Custom Log in Log Analytics Workspaces
-
-Back at the Log Analytics Workspaces, you will navigate to Custom Logs and select "Add Custom Logs".
-
-To proceed:
 
 - Go to LAW, then select your workspace.
 - On the left-hand side, click on "Tables" > "Create" > "Custom Log".
 
+![VirtualBox_Ubuntu_31_03_2024_14_48_56](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/b69bb2bb-6908-44d2-91e9-8f1d69660dbe)
+
 Upload the text file containing the sample log copied earlier. Move to "Collection paths". Paste the location on the virtual machine where the logs are stored, which is `C:\ProgramData\failed_rdp.log`.
+
+![VirtualBox_Ubuntu_31_03_2024_14_51_29](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/dbbb15ec-ff2a-4733-83be-a91face8bead)
+
+![VirtualBox_Ubuntu_31_03_2024_14_53_08](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/be1a6014-87dd-42e1-95c2-325d214dc6a1)
 
 Under "Details":
 
 - Name the Custom log as: `FAILED_RDP_WITH_GEO`.
 - Click "Next" > "Create".
 
+![VirtualBox_Ubuntu_31_03_2024_14_53_26](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/b8f97304-18e7-4825-91ea-9daa31ae41a4)
+
 Return to Log Analytics Workspaces > "Logs" and execute the query: `FAILED_RDP_WITH_GEO_CL`. It might take some time for the query to sync up and display results. Once you've confirmed that the results are being pulled up correctly, you can proceed to create a workbook to visualize this data.
+
+![VirtualBox_Ubuntu_31_03_2024_15_02_42](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/8daf1ec4-3881-40d5-9581-9d1e3d0956aa)
+
+![VirtualBox_Ubuntu_31_03_2024_15_21_43](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/fd24c9fb-7b3c-45b3-9337-3a8fa0fa0c8c)
 
 ## Setting Up Visualization in Sentinel Workbook
 
+![VirtualBox_Ubuntu_31_03_2024_14_55_23](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/84fe955e-8dff-4371-a96b-240e648b6f78)
+
 Navigate to Sentinel > New Workbook > Create New Query and input the provided query. Set the visualization to "Map", then run the query. Enable auto-refresh every 5 minutes and wait for attacks to populate on the map.
+
+![VirtualBox_Ubuntu_31_03_2024_14_56_07](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/b348acba-9e06-4c4d-a4b6-da5f55402a32)
+
+![VirtualBox_Ubuntu_31_03_2024_14_56_24](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/b9436a70-2a63-42ae-a6c8-9f21b2cb3787)
+
+![VirtualBox_Ubuntu_31_03_2024_14_58_42](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/7ce04958-3b07-4f1f-9cdd-58653e85ca19)
+
+![VirtualBox_Ubuntu_31_03_2024_15_01_08](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/9dd5a024-1ce2-47f5-8d01-a3e93ca70b87)
+
 
 In Map settings:
 - Set the metric label to "Country".
 - Set the metric value to "event_count".
+
+![VirtualBox_Ubuntu_31_03_2024_15_24_56](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/1e5fd8df-3a73-4710-b52c-fc81804b1047)
 
 ```KQL
 FAILED_RDP_WITH_GEO_CL
@@ -242,7 +324,12 @@ FAILED_RDP_WITH_GEO_CL
 | where sourcehost != ""
 | summarize event_count=count() by latitude, longitude, sourcehost, label, destination, country
 ```
+
+![Screenshot 2024-04-01 132218](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/3bf0943b-b871-4465-b344-62add675a439)
+
 During my testing, I noticed something intriguing. They managed to guess the virtual machine's name and used it as the username for the RDP login. Although I set a unique username for the administrator account—something not commonly done in lab settings—this finding really caught my attention.
+
+![Screenshot 2024-04-01 122932](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/b60c35a7-4c8a-4de4-a483-a9f4349515c7)
 
 I've also set a strong and unique password for the administrator account, enhancing the security further. I highly recommend you do the same.
 
