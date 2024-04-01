@@ -40,6 +40,8 @@ In this project, we'll be diving into the intricacies of setting up a virtual ma
 - [Configuring Custom Log in Log Analytics Workspaces](#configuring-custom-log-in-log-analytics-workspaces)
 - [Setting Up Visualization in Sentinel Workbook](#setting-up-visualization-in-sentinel-workbook)
 - [Remediation Steps for Enhanced Security](#remediation-steps-for-enhanced-security)
+- [Deprovision Resource Groups](#deprovision-resource-groups)
+
 
 ## Create Virtual Machine Honeypot
   
@@ -240,7 +242,17 @@ FAILED_RDP_WITH_GEO_CL
 | where sourcehost != ""
 | summarize event_count=count() by latitude, longitude, sourcehost, label, destination, country
 ```
+During my testing, I noticed something intriguing. They managed to guess the virtual machine's name and used it as the username for the RDP login. Although I set a unique username for the administrator account—something not commonly done in lab settings—this finding really caught my attention.
 
+I've also set a strong and unique password for the administrator account, enhancing the security further. I highly recommend you do the same.
+
+Back in the Log Analytics workspace under "Logs," you can run this query to check for unique usernames used and their frequency. Please refrain from using these credentials, even though this is a lab demonstration.
+
+```KQL
+FAILED_RDP_WITH_GEO_CL 
+| extend username = extract(@"username:([^,]+)", 1, RawData)
+| summarize Count = count() by username
+```
 ## Remediation Steps for Enhanced Security
 
 **Secure Windows**
@@ -264,3 +276,17 @@ FAILED_RDP_WITH_GEO_CL
 - Regularly update the RDP Client to the latest version to benefit from security patches and improvements.
 - Disconnect from an RDP session when it is not being used and set timeouts for idle sessions.
 - Limit the number of simultaneous active sessions.
+
+## Deprovision Resource Groups
+
+To prevent unnecessary charges and optimize resources, it's essential to deprovision unused or redundant Resource Groups. This is especially important once you are done with the lab and no longer want to keep the machine, or if you have used up all your free credits. To deprovision Resource Groups, follow these steps:
+
+1. **Navigate to the Azure Portal**: Open your web browser and go to the [Azure Portal](https://portal.azure.com/).
+2. **Sign in to Your Account**: Enter your credentials to sign in to your Azure account.
+3. **Access Resource Groups**: In the Azure Portal, click on "Resource groups" in the left-hand menu to view a list of all your Resource Groups.
+4. **Select the Resource Group**: Click on the name of the Resource Group you want to deprovision.
+5. **Review Resources**: Inside the selected Resource Group, review the list of resources to ensure you are deprovisioning the correct group.
+6. **Deprovision Resources**: Click on "Delete resource group" at the top of the page.
+7. **Confirm Deletion**: Follow the on-screen instructions to confirm the deletion of the Resource Group.
+
+By following these steps, you can effectively deprovision unused Resource Groups, helping to avoid unnecessary charges and optimize your Azure resources.
