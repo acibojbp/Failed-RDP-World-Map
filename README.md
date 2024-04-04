@@ -4,7 +4,7 @@
 
 In this project, we'll be diving into the intricacies of setting up a virtual machine honeypot. We'll walk through creating the virtual environment, fine-tuning the security settings on a Windows 10 VM, and integrating with Log Analytics Workspaces and Microsoft Defender for Cloud. Additionally, we'll deploy Microsoft Sentinel for enhanced threat detection and configure visualization tools within the Sentinel workbook. To wrap things up, we'll explore remediation steps aimed at boosting overall security.
 
-![Failed RDP World Map Diagram](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/c54d3b60-84e4-4ea9-a2ce-c541743a3677)
+![Failed RDP World Map Diagram](https://github.com/acibojbp/Failed-RDP-World-Map/assets/164168280/19a1049a-7b54-458a-ae21-f1858f9a643e)
 
 ### Objectives
 
